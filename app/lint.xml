@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/background_xhdpi.png" />
+        <ignore path="src/main/res/drawable/btnlink.jpg" />
+        <ignore path="src/main/res/drawable/camera.png" />
+        <ignore path="src/main/res/drawable/closesessionldwn.jpg" />
+        <ignore path="src/main/res/drawable/closesessionlup.jpg" />
+        <ignore path="src/main/res/drawable/datasetupldwn.jpg" />
+        <ignore path="src/main/res/drawable/syncdevicesldwn.jpg" />
+        <ignore path="src/main/res/drawable/syncdeviceslup.jpg" />
+        <ignore path="src/main/res/drawable/watch.png" />
+    </issue>
+</lint>

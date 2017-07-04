@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background = "@color/gray"
+    tools:context="guestlink.kodakalaris.com.guestlink.GuestLinkMainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <TextView
+        android:id="@+id/lblLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lblPhotographer"
+        android:layout_alignStart="@+id/lblSubjects"
+        android:layout_marginBottom="15dp"
+        android:text="Location:"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/lblSubjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lblLocation"
+        android:layout_alignStart="@+id/lblPhotographer"
+        android:layout_marginBottom="15dp"
+        android:text="Subject(s):"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtGuestID"
+        style="@android:style/Widget.AutoCompleteTextView"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblGuestID"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:ems="8"
+        android:inputType="none"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/lblGuestID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guest_id"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/btnLink"
+        android:layout_alignEnd="@+id/textClock" />
+
+    <ImageButton
+        android:id="@+id/btnExit"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/exitup"
+        android:onClick="btnExit_Click"
+        android:padding="0dp"
+        android:focusable="false"
+        android:scaleType="centerCrop" />
+
+    <ImageButton
+        android:id="@+id/btnCloseSession"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnExit"
+        android:layout_marginStart="21dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/closesessionlup"
+        android:cropToPadding="true"
+        android:onClick="closeSession"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:focusable="false"
+        />
+
+
+    <ImageButton
+        android:id="@+id/btnSetup"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignEnd="@+id/btnCloseSession"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/datasetuplup"
+        android:onClick="getSetup"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:focusable="false"
+        />
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnCloseSession"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Currrent Date"
+        android:textColor="@android:color/white" />
+
+    <ImageButton
+        android:id="@+id/btnLink"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignStart="@+id/btnExit"
+        android:layout_below="@+id/btnExit"
+        android:layout_marginTop="15dp"
+        android:onClick="getCamera"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/syncdeviceslup"
+        />
+
+    <ImageView
+        android:id="@+id/picBattLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnSetup"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="4dp"
+        android:layout_toStartOf="@+id/chronometer2"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/batterygreen" />
+
+    <TextView
+        android:id="@+id/txtBattLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/picBattLevel"
+        android:layout_alignStart="@+id/picBattLevel"
+        android:layout_below="@+id/picBattLevel"
+        android:text="100"
+        android:textAlignment="center"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/lblPhotographer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lblTotGuestIDs"
+        android:layout_alignStart="@+id/lblTotGuestIDs"
+        android:layout_marginBottom="15dp"
+        android:text="Photographer:"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/lblTotGuestIDs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lblCamSerial"
+        android:layout_alignStart="@+id/btnSetup"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:text="Total Guest ID Scans:"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/lblCamSerial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="37dp"
+        android:text="Linked Camera:"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/btnSetup"
+        android:layout_alignStart="@+id/lblTotGuestIDs" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnCloseSession"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-2dp"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtSubjects"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblSubjects"
+        android:layout_alignBottom="@+id/lblSubjects"
+        android:layout_alignEnd="@+id/btnLink"
+        android:layout_marginRight="10dp"
+        android:text="No Subjects"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtLocation"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblLocation"
+        android:layout_alignBottom="@+id/lblLocation"
+        android:layout_alignStart="@+id/txtSubjects"
+        android:text="No Location"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtPhotographer"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtLocation"
+        android:layout_alignTop="@+id/lblPhotographer"
+        android:text="No Photographer"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtTotScans"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtPhotographer"
+        android:layout_alignTop="@+id/lblTotGuestIDs"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtCamSerial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtTotScans"
+        android:layout_alignTop="@+id/lblCamSerial"
+        android:text="123456789"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnCloseSession"
+        android:layout_centerHorizontal="true"
+        android:text="Device Name"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
+</android.widget.RelativeLayout>

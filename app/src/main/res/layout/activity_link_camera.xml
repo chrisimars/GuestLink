@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background = "@color/gray"
+    android:label="Link Camera"
+    tools:context="guestlink.kodakalaris.com.guestlink.LinkCamera">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignEnd="@+id/txtMessage"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="62dp"
+        android:layout_marginEnd="5dp"
+        android:onClick="btnOK_Click"
+        android:text="OK"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+    //android:focusable="false"
+    <TextView
+        android:id="@+id/txtMessage"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:text="Please Scan the Camera Barcode to Link the Devices."
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/txtCamSerial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:enabled="true"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_below="@+id/txtMessage"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignStart="@+id/txtCamSerial"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="btnCancel_Click"
+        android:text="Cancel"
+        android:textSize="13sp"
+        tools:textStyle="bold" />
+
+</android.widget.RelativeLayout>

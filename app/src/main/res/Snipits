@@ -1,0 +1,12 @@
+&& This Method calls the Alert Dialog and passes in the title and message&&
+&&It is located in the Utilities Class and can be used from any Activity&&
+Utilities.showDialog(this,"Bite Me", result1, new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
+_______________________________________________________________________________________________
+
+
+
