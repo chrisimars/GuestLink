@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     tools:context="guestlink.kodakalaris.com.guestlink.setup">
-    android:label="GuestLink Setup"
 
     <Spinner
         android:id="@+id/spinPhotographer"
@@ -15,7 +14,7 @@
         android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/lblPhotographer"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="2dp"
         android:background="@color/white"
         android:popupBackground="@color/white"
@@ -53,7 +52,7 @@
         android:layout_marginBottom="33dp"
         android:layout_marginEnd="41dp"
         android:onClick="save"
-        android:text="Save" />
+        android:text="@string/save" />
 
     <Button
         android:id="@+id/btnCancel"
@@ -64,7 +63,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="49dp"
         android:onClick="cancel"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 
     <TextView
         android:id="@+id/lblPhotographer"
@@ -73,7 +72,7 @@
         android:layout_alignStart="@+id/spinPhotographer"
         android:layout_below="@+id/editDeviceName"
         android:layout_marginTop="26dp"
-        android:text="Select Photographer"
+        android:text="@string/photographer"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
@@ -84,7 +83,7 @@
         android:layout_alignStart="@+id/spinLocation"
         android:layout_below="@+id/spinPhotographer"
         android:layout_marginTop="21dp"
-        android:text="Select Location"
+        android:text="@string/location"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
@@ -95,7 +94,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/lblPhotographer"
         android:layout_marginTop="12dp"
-        android:text="Device Name"
+        android:text="@string/deviceName"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
@@ -117,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-        android:text="Guest ID Length"
+        android:text="@string/idLength"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:layout_below="@+id/spinLocation"

@@ -3,9 +3,8 @@ package guestlink.kodakalaris.com.guestlink;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class LinkCamera extends Activity {
@@ -49,4 +48,14 @@ public class LinkCamera extends Activity {
   public void btnCancel_Click(View view){
       super.onBackPressed();
   }
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_ENTER:
+                //TODO Handle Enter Key Here
+                return true;
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
+    }
 }

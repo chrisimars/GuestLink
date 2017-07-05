@@ -1,29 +1,21 @@
 package guestlink.kodakalaris.com.guestlink;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Environment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.TextView;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 
 import static java.lang.String.valueOf;
@@ -36,7 +28,6 @@ public class setup extends AppCompatActivity {
             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             | View.SYSTEM_UI_FLAG_FULLSCREEN
             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-    private boolean ret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +37,7 @@ public class setup extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
 
          /* Set the app into full screen mode */
-        //getWindow().getDecorView().setSystemUiVisibility(flags);
+        getWindow().getDecorView().setSystemUiVisibility(flags);
 
         //Get instances of the Spinners and apply OnItemSelectedListener on it
         Spinner spinPhotographer = (Spinner) findViewById(R.id.spinPhotographer);
@@ -118,7 +109,7 @@ public class setup extends AppCompatActivity {
     public void save(View view){
 
         try {
-            ret = true;
+            boolean ret = true;
             if (ret = true) {
                 Globals t = Globals.getInstance();  //Get a n instance of the Global Variables
                 SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);

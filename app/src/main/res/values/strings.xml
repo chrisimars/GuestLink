@@ -1,41 +1,22 @@
 <resources>
     <string name="app_name">Kodak Alaris GuestLink</string>
-    <string name="debug_off">Debug off</string>
-    <string name="toast_need_data">Choose/enter data to read/write!</string>
+
     <string name="toast_not_mifare_classic">Not Mifare Classic card!</string>
-    <string name="toast_write_success">Write success!</string>
-    <string name="toast_write_fail">Write failed!</string>
-    <string name="auth_failed">Auth failed!</string>
     <string name="guest_id">Guest ID:</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="default_location">Location1</string>
+    <string name="default_subject">Subject1</string>
+    <string name="location">Location:</string>
+    <string name="save">Save</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="photographer">Photographer</string>
+    <string name="selectLocation">Select Location</string>
+    <string name="deviceName">Device Name</string>
+    <string name="idLength">Guest ID Length</string>
 
-    <!-- Strings related to Settings -->
-
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
 
     <string name="pref_title_sync_frequency">Sync frequency</string>
     <string-array name="pref_sync_frequency_titles">
@@ -71,17 +52,9 @@
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-    <string name="pref_title_vibrate">Vibrate</string>
-    <string name="dialogfragment">Open DialogFragment</string>
-    <string name="welcome">This is a DialogFragment.</string>
-    <string name="title_activity_link_camera">Link Camera</string>
+     <string name="title_activity_link_camera">Link Camera</string>
     <string name="title_activity_message">Message</string>
     <string name="title_activity_setup">GuestLink Setup</string>
-
     <string name="photographer_prompt">Choose a Photographer</string>
     <string name="location_prompt">Choose a Location</string>
     <string name="subject_prompt">Choose a Subject</string>

@@ -3,22 +3,13 @@ package guestlink.kodakalaris.com.guestlink;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
-
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 
 /**
  * Created by Donald Chapman1 on 6/16/2017.
@@ -78,14 +69,14 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
 
             //Check for the Guest ID file. Create it if it does not exist
             File gidfile = new File(fileName);
-            if (!gidfile.exists()); {
+            if (!gidfile.exists()) {
                 gidfile.createNewFile();
             }
 
             //Append the Guest ID string to the file
-            String sBody = lastGuestID;
+            String sBody = camSerial + "," + dateTime + lastGuestID + "," + metaData + "\r\n";
             FileWriter writer = new FileWriter(fileName, true);
-            writer.append(camSerial + "," + dateTime + sBody + "," + metaData + "\r\n");
+            writer.append(sBody);
             writer.flush();
             writer.close();
             return true;
@@ -128,19 +119,19 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
         try {
 
             File dir = new File(Environment.getExternalStorageDirectory().getPath() + "/guestlink");
-            if (!dir.exists()); {
+            if (!dir.exists()) {
                 dir.mkdir();
             }
             //Check for the error log file. Create it if it does not exist
             File logfile = new File(fileName);
-            if (!logfile.exists()); {
+            if (!logfile.exists()) {
                 logfile.createNewFile();
             }
 
             //Append the error message string to the file
-            String sBody = message;
+            String sBody = time + " " + message + "\r\n";
             FileWriter writer = new FileWriter(fileName, true);
-            writer.append(time + " " + message + "\r\n");
+            writer.append(sBody);
             writer.flush();
             writer.close();
             return true;
@@ -156,14 +147,14 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
             String fileName = Environment.getExternalStorageDirectory().getPath() + "/guestLink/json.txt";
 
             File datafile = new File(fileName);
-            if (!datafile.exists()); {
+            if (!datafile.exists()) {
                 datafile.createNewFile();
             }
 
             //Append the error message string to the file
-            //String sBody = data;
+            String sBody = data  + "\r\n";
             FileWriter writer = new FileWriter(fileName, true);
-            writer.append(data + "\r\n");
+            writer.append(sBody);
             writer.flush();
             writer.close();
         }

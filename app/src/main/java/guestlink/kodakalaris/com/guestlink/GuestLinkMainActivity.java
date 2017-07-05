@@ -55,21 +55,18 @@ import static java.lang.Integer.valueOf;
 
 public class GuestLinkMainActivity extends AppCompatActivity {
     private static final String TAG = GuestLinkMainActivity.class.getSimpleName();
-    private boolean mDebug = true;
-    private String mCharset = "US-ASCII";
     private NfcAdapter mAdapter;
     private PendingIntent mPendingIntent;
     private IntentFilter[] mIntentFilters;
     private String[][] mTechList;
     private static final int GetMessage = 2;
-    TextView txtCamSerial;
     private Integer totScans = 0, guestIdLength = 16;
     private String photographer = "Photographer", location = "Location 1", subjects = "Moe", eventID = "123456", guestidFile = "", deviceID = "";
     private String lastGuestID = "", metaData = "", camSerial = "", deviceName = "Scan_", logFile = "/sdcard/guestlink/guestLinkLog.txt";
-    DBHelper dbHelper;
+    private DBHelper dbHelper;
     private JSONArray guestRecords;
 
-    final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+    private final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -89,7 +86,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             Utilities.writeToLog("\r\n*************************\r\nApplication Startup\r\n *************************", logFile);
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_guest_link_main);
-            Globals g = Globals.getInstance();     //Get a n instance of the Global Variables
+            //Globals g = Globals.getInstance();     //Get a n instance of the Global Variables
             SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
 
 //*********************************************************************
@@ -176,12 +173,10 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             txtDate.setText(ct);
 
             //*** Check the External Storage for Read Write Access ***
-            boolean ret = Utilities.isExternalStorageWritable();
-            if (ret = false) {
+            if (!Utilities.isExternalStorageWritable()) {
                 burntToast("Check SD Card");
             }
-            ret = Utilities.isExternalStorageReadable();
-            if (ret = false) {
+            if (!Utilities.isExternalStorageReadable()) {
                 toast("Check SD Card");
             }
 
@@ -256,9 +251,6 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                 Utilities.writeGuestIdFile(camSerial, result1, guestidFile, dateTime, metaData);
                 Utilities.writeToLog("GUEST ID RECEIVED: " + result1, logFile);
                 toast("Last Scan = " + result1);
-                dbHelper.insertRecord(deviceID, camSerial, dateTime, result1, photographer, location,
-                        subjects, eventID);
-
 
                 //Update Display with the just scanned GuestID value
                 TextView editText = (TextView) findViewById(R.id.txtGuestID);
@@ -267,8 +259,11 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
                 //Increment total scans variable and update GUI with the count
                 totScans += 1;
-                TextView txtBattLevel = (TextView) findViewById(R.id.txtTotScans);
-                txtBattLevel.setText(String.valueOf(totScans));
+                TextView txtTotScans = (TextView) findViewById(R.id.txtTotScans);
+                txtTotScans.setText(String.valueOf(totScans));
+
+                dbHelper.insertRecord(deviceID, camSerial, dateTime, result1, photographer, location,
+                        subjects, eventID);
             }
         } catch (IOException ex) {
             Utilities.writeToLog(ex.toString(), logFile);
@@ -320,8 +315,6 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
     private String convertBytes2String(byte[] data) throws UnsupportedEncodingException {
         try {
-            String ret;
-            String invalid = null;
             String tempData = "";
             int pos = data.length;
 
@@ -335,6 +328,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             //if Make sure there are either 8 or 16 actual values
             if ((pos == 8) || (pos == 16)) {
                 //return a Sttring stripping out anything that is non Alpha-numeric
+                String mCharset = "US-ASCII";
                 tempData = new String(data, 0, pos, mCharset).replaceAll("[^A-Za-z0-9]", "");
                 if (pos == 8) {
                     if (tempData.matches("^([A-Za-z]|[0-9])+$")) {
@@ -499,7 +493,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             deviceName = sharedPreferences.getString("deviceName", "Scan_");
             guestIdLength = valueOf(sharedPreferences.getString("guestIdLength", "16"));
             camSerial = sharedPreferences.getString("camSerial", "");
-            subjects = sharedPreferences.getString("subjects", "");
+            subjects = "Test Subject"; //sharedPreferences.getString("subjects", "");
             metaData = photographer + "," + eventID + "," + location + "," + subjects;
             Utilities.writeToLog("Metadata String = " + metaData, logFile);
         } catch (Exception ex) {
@@ -523,8 +517,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                 text.setVisibility(View.INVISIBLE);
                 text = (TextView) findViewById(R.id.lblSubjects);
                 text.setVisibility(View.INVISIBLE);
-            }else;
-            {
+            }else{
                 text = (TextView) findViewById(R.id.txtSubjects);
                 text.setText(subjects);
             }
@@ -536,7 +529,6 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
             TextView e = (TextView) findViewById((R.id.txtGuestID));
             e.setInputType(InputType.TYPE_NULL);
-
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -595,7 +587,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                             guestRecords = new JSONArray();
                             guestRecords = getRecords();
 
-                            Utilities.writeToLog(guestRecords.toString(), logFile);
+                            Utilities.writeToFile(guestRecords.toString());
 
 
                             //If we close the session, refresh the folder and file index
@@ -650,7 +642,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    public void refreshFileIndex(String file) {
+    private void refreshFileIndex(String file) {
         try {
             File f = new File(file);
             //File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath());     //  + "/guestlink/guestLink.log");
@@ -703,7 +695,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
         mp.start();
     }
 
-    public JSONArray getRecords()
+    private JSONArray getRecords()
     {
         Context context = getApplicationContext();
         context.getDatabasePath(DBHelper.DATABASE_NAME);
@@ -722,7 +714,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
         JSONArray resultSet  = new JSONArray();
 
         cursor.moveToFirst();
-        while (cursor.isAfterLast() == false) {
+        while (!cursor.isAfterLast()) {
 
             int totalColumn = cursor.getColumnCount();
             JSONObject rowObject = new JSONObject();

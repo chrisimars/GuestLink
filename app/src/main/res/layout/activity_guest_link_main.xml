@@ -16,7 +16,7 @@
         android:layout_above="@+id/lblPhotographer"
         android:layout_alignStart="@+id/lblSubjects"
         android:layout_marginBottom="15dp"
-        android:text="Location:"
+        android:text="@string/location"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -34,15 +34,16 @@
         style="@android:style/Widget.AutoCompleteTextView"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lblGuestID"
-        android:layout_centerHorizontal="true"
         android:backgroundTint="@color/white"
         android:ems="8"
         android:inputType="none"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_above="@+id/lblSubjects"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp" />
 
     <TextView
         android:id="@+id/lblGuestID"
@@ -50,54 +51,53 @@
         android:layout_height="wrap_content"
         android:text="@string/guest_id"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/btnLink"
-        android:layout_alignEnd="@+id/textClock" />
+        android:layout_above="@+id/txtGuestID"
+        android:layout_alignEnd="@+id/textClock"
+        android:layout_marginBottom="14dp" />
 
     <ImageButton
         android:id="@+id/btnExit"
         style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/exitup"
+        android:focusable="false"
         android:onClick="btnExit_Click"
         android:padding="0dp"
-        android:focusable="false"
         android:scaleType="centerCrop" />
 
     <ImageButton
         android:id="@+id/btnCloseSession"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/btnExit"
         android:layout_marginStart="21dp"
         android:adjustViewBounds="true"
         android:background="@drawable/closesessionlup"
         android:cropToPadding="true"
+        android:focusable="false"
         android:onClick="closeSession"
         android:padding="0dp"
-        android:scaleType="centerCrop"
-        android:focusable="false"
-        />
+        android:scaleType="centerCrop" />
 
 
     <ImageButton
         android:id="@+id/btnSetup"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_alignEnd="@+id/btnCloseSession"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:background="@drawable/datasetuplup"
+        android:focusable="false"
         android:onClick="getSetup"
         android:padding="0dp"
-        android:scaleType="centerCrop"
-        android:focusable="false"
-        />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/txtDate"
@@ -111,16 +111,15 @@
 
     <ImageButton
         android:id="@+id/btnLink"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_alignStart="@+id/btnExit"
         android:layout_below="@+id/btnExit"
         android:layout_marginTop="15dp"
         android:onClick="getCamera"
         android:padding="0dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/syncdeviceslup"
-        />
+        app:srcCompat="@drawable/syncdeviceslup" />
 
     <ImageView
         android:id="@+id/picBattLevel"

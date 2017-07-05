@@ -1,5 +1,7 @@
 package guestlink.kodakalaris.com.guestlink;
-
+/**
+ * Created by Donald Chapman1 on 6/30/2017.
+ */
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,26 +11,20 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.os.Environment;
 
-
-/**
- * Created by Donald Chapman1 on 6/30/2017.
- */
-
 public class DBHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "GuestIDs.db";
+    public static final String DATABASE_NAME = Environment.getExternalStorageDirectory().getPath() + "/guestlink/GuestIDs.db";
     private static final int DATABASE_VERSION = 1;
-    public static final String GUESTID_TABLE_NAME = "guestids";
-    public static final String GUESTID_COLUMN_ID = "_id";
-    public static final String GUESTID_COLUMN_DEVICEID = "deviceid";
-    public static final String GUESTID_COLUMN_CAMERAID = "cameraid";
-    public static final String GUESTID_COLUMN_DATETIME = "datetime";
-    public static final String GUESTID_COLUMN_GUESTID = "guestid";
-    public static final String GUESTID_COLUMN_PHOTOGRAPHER = "photographer";
-    public static final String GUESTID_COLUMN_LOCATION = "location";
-    public static final String GUESTID_COLUMN_SUBJECTS = "subjects";
-    public static final String GUESTID_COLUMN_EVENTID = "eventid";
-    private String logFile = logFile = Environment.getExternalStorageDirectory().getPath() + "/guestlink/guestLinkLog.txt";
-
+    private static final String GUESTID_TABLE_NAME = "guestids";
+    private static final String GUESTID_COLUMN_ID = "_id";
+    private static final String GUESTID_COLUMN_DEVICEID = "deviceid";
+    private static final String GUESTID_COLUMN_CAMERAID = "cameraid";
+    private static final String GUESTID_COLUMN_DATETIME = "datetime";
+    private static final String GUESTID_COLUMN_GUESTID = "guestid";
+    private static final String GUESTID_COLUMN_PHOTOGRAPHER = "photographer";
+    private static final String GUESTID_COLUMN_LOCATION = "location";
+    private static final String GUESTID_COLUMN_SUBJECTS = "subjects";
+    private static final String GUESTID_COLUMN_EVENTID = "eventid";
+    private String logFile = Environment.getExternalStorageDirectory() + "guestlink/guestLinkLog.txt";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME , null, DATABASE_VERSION);
@@ -91,41 +87,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public int numberOfRows() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(db, GUESTID_TABLE_NAME);
-        return numRows;
-    }
-
-    /*public boolean updatePerson(Integer id, String name, String gender, int age) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(PERSON_COLUMN_NAME, name);
-        contentValues.put(PERSON_COLUMN_GENDER, gender);
-        contentValues.put(PERSON_COLUMN_AGE, age);
-        db.update(PERSON_TABLE_NAME, contentValues, PERSON_COLUMN_ID + " = ? ", new String[] { Integer.toString(id) } );
-        return true;
-    }*/
-
-    public Integer deleteRecord(Integer id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(GUESTID_TABLE_NAME,
-                GUESTID_COLUMN_ID + " = ? ",
-                new String[] { Integer.toString(id) });
-    }
-
-    public Cursor getRecord(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery("SELECT * FROM " + GUESTID_TABLE_NAME + " WHERE " +
-                GUESTID_COLUMN_ID + "=?", new String[]{Integer.toString(id)});
-        return res;
-    }
-
-    public Cursor getAllRecords() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "SELECT * FROM " + GUESTID_TABLE_NAME, null );
-        return res;
-    }
 }
 
 
