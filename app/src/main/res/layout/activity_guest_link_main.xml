@@ -52,10 +52,11 @@
         android:id="@+id/lblGuestID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnLink"
+        android:layout_centerHorizontal="true"
         android:text="@string/guest_id"
         android:textColor="@android:color/white"
-        android:layout_alignBottom="@+id/btnLink"
-        android:layout_alignEnd="@+id/textClock" />
+        android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/btnExit"
@@ -105,11 +106,13 @@
         android:id="@+id/txtDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnCloseSession"
+        android:layout_above="@+id/textClock"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@+id/lblCamSerial"
         android:text="Currrent Date"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/btnLink"
@@ -183,10 +186,11 @@
         android:id="@+id/textClock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnCloseSession"
+        android:layout_below="@+id/btnCloseSession"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-2dp"
-        android:textColor="@android:color/white" />
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/txtSubjects"
@@ -252,9 +256,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnCloseSession"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
         android:text="Device Name"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
 
 </android.widget.RelativeLayout>

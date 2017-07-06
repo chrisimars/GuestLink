@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Kodak Alaris GuestLink</string>
     <string name="toast_not_mifare_classic">Not Mifare Classic card!</string>
-    <string name="guest_id">Guest ID:</string>
+    <string name="guest_id">Last Guest ID:</string>
     <string name="title_activity_settings">Settings</string>
     <string name="default_location">Location1</string>
     <string name="default_subject">Subject1</string>
