@@ -699,13 +699,8 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     {
         Context context = getApplicationContext();
         context.getDatabasePath(DBHelper.DATABASE_NAME);
-
         String myPath = context.getDatabasePath(DBHelper.DATABASE_NAME).toString();     // Set path to your database
-
-        String myTable = "guestids";     //Set name of your table
-
-//or you can use `context.getDatabasePath("my_db_test.db")`
-
+        String myTable = "guestids";
         SQLiteDatabase myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
 
         String searchQuery = "SELECT  * FROM " + myTable;
@@ -715,10 +710,8 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-
             int totalColumn = cursor.getColumnCount();
             JSONObject rowObject = new JSONObject();
-
             for( int i=0 ;  i< totalColumn ; i++ )
             {
                 if( cursor.getColumnName(i) != null )
