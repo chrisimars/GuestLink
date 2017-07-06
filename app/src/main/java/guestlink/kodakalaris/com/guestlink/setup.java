@@ -3,6 +3,7 @@ package guestlink.kodakalaris.com.guestlink;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -153,5 +154,71 @@ public class setup extends AppCompatActivity {
     public void cancel(View view){
         super.onBackPressed();
     }
+    // Method to handle the Click Event on System Setup Button
+    public void getSysSetup(View view) {
+        try {
+            // Create The  Intent and Start The Activity to scan the camera Barcode
+            Intent intentGetSysSetup = new Intent(this, sysSetup.class);
+            startActivityForResult(intentGetSysSetup, 2);// Activity is started with requestCode 2
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
+    }
 
+
+    // SystemSetup Callback
+    // Call Back method  to get the Message form other Activity    override the method
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        try {
+            super.onActivityResult(requestCode, resultCode, data);
+            // check if the request code is same as what is passed  here it is 2
+            if (requestCode == 2) {
+                // Call the System Setup Activity
+                String message = data.getStringExtra("MESSAGE");
+                getSystemSetup();
+
+                Utilities.writeToLog("User Entered System Setup", logFile);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        try {
+            super.onResume();
+        /* Reset the app into full screen mode */
+            getWindow().getDecorView().setSystemUiVisibility(flags);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        try {
+            super.onPause();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
+    }
+    // Method to handle the Click Event on Setup Button
+    public void getSystemSetup() {
+        try {
+            // Create The  Intent and Start The Activity to scan the camera Barcode
+            Intent intentGetSetup = new Intent(this, sysSetup.class);
+            startActivity(intentGetSetup);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
+    }
 }

@@ -17,40 +17,6 @@ public class password extends AppCompatActivity {
        txtPassword = (EditText) findViewById(R.id.txtPassword);
     }
 
-    // Method to handle the Click Event on System Setup Button
-    public void getSysSetup(View view) {
-        try {
-            // Create The  Intent and Start The Activity to scan the camera Barcode
-            Intent intentGetSysSetup = new Intent(this, sysSetup.class);
-            startActivityForResult(intentGetSysSetup, 2);// Activity is started with requestCode 2
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Utilities.writeToLog(ex.toString(), logFile);
-        }
-    }
-
-
-    // SystemSetup Callback
-    // Call Back method  to get the Message form other Activity    override the method
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        try {
-            super.onActivityResult(requestCode, resultCode, data);
-            // check if the request code is same as what is passed  here it is 2
-            if (requestCode == 2) {
-                // Call the System Setup Activity
-                String message = data.getStringExtra("MESSAGE");
-
-
-                Utilities.writeToLog("User Entered System Setup", logFile);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Utilities.writeToLog(ex.toString(), logFile);
-        }
-    }
-
-
     public void btnOK_Click(View view){
        try {
             String pw = "";

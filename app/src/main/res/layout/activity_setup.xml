@@ -127,7 +127,8 @@
         android:layout_alignBottom="@+id/btnSave"
         android:layout_marginStart="-5dp"
         android:layout_toEndOf="@+id/lblGuestIdLength"
-        android:background="@drawable/datasetuplup" />
+        android:background="@drawable/datasetuplup"
+        android:onClick="getSysSetup" />
 
 
 </android.widget.RelativeLayout>
