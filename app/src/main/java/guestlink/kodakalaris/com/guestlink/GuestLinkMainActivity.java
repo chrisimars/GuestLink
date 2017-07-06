@@ -36,10 +36,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -404,6 +402,18 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             Log.i("Info", ex.toString());
         }
     }
+    // Method to handle the Click Event on Setup Button
+    public void getSetup(View view) {
+        try {
+            // Create The  Intent and Start The Activity to scan the camera Barcode
+            Intent intentGetSetup = new Intent(this, setup.class);
+            startActivity(intentGetSetup);
+            //startActivityForResult(intentGetCamera, 2);// Activity is started with requestCode 2
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
+    }
 
     // Method to handle the Click Event on Link Camera Button
     public void getCamera(View view) {
@@ -417,18 +427,6 @@ public class GuestLinkMainActivity extends AppCompatActivity {
         }
     }
 
-    // Method to handle the Click Event on Setup Button
-    public void getSetup(View view) {
-     try {
-            // Create The  Intent and Start The Activity to scan the camera Barcode
-            Intent intentGetSetup = new Intent(this, setup.class);
-            startActivity(intentGetSetup);
-            //startActivityForResult(intentGetCamera, 2);// Activity is started with requestCode 2
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Utilities.writeToLog(ex.toString(), logFile);
-        }
-    }
 
     // GETCAMERA Callback
     // Call Back method  to get the Message form other Activity    override the method

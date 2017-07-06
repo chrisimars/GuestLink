@@ -41,7 +41,10 @@
             android:name=".setup"
             android:label="GuestLink Setup" />
         android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".systemSetup"></activity>
+        <activity android:name=".Password" />
+        <activity
+            android:name=".systemSettings"
+            android:label="@string/title_activity_system_settings"></activity>
     </application>
 
 </manifest>
