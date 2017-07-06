@@ -37,7 +37,7 @@ public class setup extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
 
          /* Set the app into full screen mode */
-        getWindow().getDecorView().setSystemUiVisibility(flags);
+        //getWindow().getDecorView().setSystemUiVisibility(flags);
 
         //Get instances of the Spinners and apply OnItemSelectedListener on it
         Spinner spinPhotographer = (Spinner) findViewById(R.id.spinPhotographer);

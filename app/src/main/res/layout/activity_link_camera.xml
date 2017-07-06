@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background = "@color/gray"
+    android:background="@color/gray"
     android:label="Link Camera"
     tools:context="guestlink.kodakalaris.com.guestlink.LinkCamera">
 
@@ -16,38 +16,39 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="62dp"
         android:layout_marginEnd="5dp"
+        android:focusable="false"
         android:onClick="btnOK_Click"
         android:text="OK"
         android:textSize="13sp"
-        android:textStyle="bold"
-        android:focusable="false"/>
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/txtMessage"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
         android:text="Please Scan the Camera Barcode to Link the Devices."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"
-        android:textSize="28sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="28sp" />
 
     <EditText
         android:id="@+id/txtCamSerial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMessage"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
         android:background="@color/white"
         android:ems="10"
         android:enabled="true"
-        android:inputType="text"
+        android:focusable="false"
+        android:inputType="textNoSuggestions"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:layout_below="@+id/txtMessage"
-        android:layout_centerHorizontal="true"
-        android:focusable="false"/>
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnCancel"
@@ -57,11 +58,11 @@
         android:layout_alignStart="@+id/txtCamSerial"
         android:layout_marginBottom="0dp"
         android:layout_marginLeft="20dp"
+        android:focusable="false"
         android:onClick="btnCancel_Click"
         android:text="Cancel"
         android:textSize="13sp"
-        tools:textStyle="bold"
-        android:focusable="false"/>
+        tools:textStyle="bold" />
 
     <EditText
         android:id="@+id/tempText"
@@ -73,7 +74,7 @@
         android:background="#00000000"
         android:cursorVisible="false"
         android:ems="10"
-        android:inputType="text"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:inputType="textNoSuggestions" />
 
 </android.widget.RelativeLayout>
