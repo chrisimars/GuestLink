@@ -52,17 +52,6 @@ public class setup extends AppCompatActivity {
         devName.setText(sharedPreferences.getString("deviceName", "Scan_"));
     }
 
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        switch(arg0.getId()){
-            case R.id.spinPhotographer:
-                break;
-            case R.id.spinLocation:
-                break;
-            case R.id.spinGuestidLength:
-                break;
-        }
-    }
-
     private void populateSpinner(String spinnerName) {
         String fileName = ("/sdcard/guestlink/" + spinnerName + ".txt");
         String line;
@@ -158,20 +147,11 @@ public class setup extends AppCompatActivity {
                 }
             });
         }
-        /*if (name.equals(defaultName)) {
-            Utilities.showDialog(this, "Set Device Name", "Please Enter a Device Name. Cannot be SCAN_", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which){
-                    switch (which) {
-                        case DialogInterface.BUTTON_POSITIVE:
 
-                }
-            }
-
-        });*/
         return mResult;
     }
-public void cancel(View view){
-    super.onBackPressed();
-}
+    public void cancel(View view){
+        super.onBackPressed();
+    }
+
 }

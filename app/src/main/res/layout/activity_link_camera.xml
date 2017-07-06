@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/gray"
     android:label="Link Camera"
-    tools:context="guestlink.kodakalaris.com.guestlink.LinkCamera">
+    tools:context="guestlink.kodakalaris.com.guestlink.LinkCamera"
+    tools:ignore="HardcodedText">
 
     <Button
         android:id="@+id/button"
@@ -20,7 +21,8 @@
         android:onClick="btnOK_Click"
         android:text="OK"
         android:textSize="13sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/txtMessage"
@@ -33,7 +35,8 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"
-        android:textSize="28sp" />
+        android:textSize="28sp"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/txtCamSerial"
@@ -51,18 +54,18 @@
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/btnCancel"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignBottom="@+id/button"
         android:layout_alignStart="@+id/txtCamSerial"
         android:layout_marginBottom="0dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:focusable="false"
         android:onClick="btnCancel_Click"
         android:text="Cancel"
         android:textSize="13sp"
-        tools:textStyle="bold" />
+        tools:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/tempText"

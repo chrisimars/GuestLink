@@ -45,25 +45,23 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="85dp"
-        android:layout_height="75dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="33dp"
-        android:layout_marginEnd="41dp"
-        android:onClick="save"
-        android:text="@string/save" />
+        android:layout_marginBottom="43dp"
+        android:layout_toEndOf="@+id/editDeviceName"
+        android:background="@drawable/checklup"
+        android:onClick="save" />
 
     <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="85dp"
-        android:layout_height="75dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignBottom="@+id/btnSave"
-        android:layout_alignEnd="@+id/lblpdaName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="49dp"
+        android:layout_alignStart="@+id/spinGuestidLength"
+        android:background="@drawable/exitup"
+        android:elevation="0dp"
         android:onClick="cancel"
-        android:text="@string/cancel" />
+        android:textAppearance="@style/TextAppearance.AppCompat" />
 
     <TextView
         android:id="@+id/lblPhotographer"
@@ -91,12 +89,12 @@
         android:id="@+id/lblpdaName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/lblPhotographer"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="35dp"
         android:text="@string/deviceName"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lblPhotographer" />
 
     <EditText
         android:id="@+id/editDeviceName"
@@ -109,7 +107,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="SCAN_"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/lblGuestIdLength"
@@ -121,6 +120,14 @@
         android:textSize="16sp"
         android:layout_below="@+id/spinLocation"
         android:layout_alignStart="@+id/spinLocation" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/btnSave"
+        android:layout_marginStart="-5dp"
+        android:layout_toEndOf="@+id/lblGuestIdLength"
+        android:background="@drawable/datasetuplup" />
 
 
 </android.widget.RelativeLayout>

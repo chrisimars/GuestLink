@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context="guestlink.kodakalaris.com.guestlink.systemSetup">
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/btnOK"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="48dp"
+        android:background="@drawable/exitup"
+        android:elevation="0dp"
+        android:onClick="cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="390dp" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="46dp"
+        android:background="@drawable/checklup"
+        android:onClick="btnOK_Click"
+        tools:layout_editor_absoluteX="265dp"
+        tools:layout_editor_absoluteY="390dp" />
+
+    <TextView
+        android:id="@+id/lblMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please Enter Password."
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="113dp"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/lblMessage"
+        android:layout_alignStart="@+id/lblMessage" />
+
+</android.widget.RelativeLayout>

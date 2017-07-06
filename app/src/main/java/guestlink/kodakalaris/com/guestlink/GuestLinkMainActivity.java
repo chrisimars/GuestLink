@@ -4,6 +4,7 @@ package guestlink.kodakalaris.com.guestlink;
 //interesting that they assigned this to "the person that was not supposed
 //to write any software"!
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -369,6 +370,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
      private void batteryLevel() {
         try {
             BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
+                @SuppressLint("SetTextI18n")
                 public void onReceive(Context context, Intent intent) {
                     int rawlevel = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
                     int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
@@ -566,6 +568,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     public void closeSession(View view) {
         try {
             Utilities.showYesNoDialog(this, "Close Session", "Are You Sure You Want to Close this Session?", new DialogInterface.OnClickListener() {
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which) {
@@ -638,8 +641,8 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                     }
                 }
             });
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Utilities.writeToLog(ex.toString(), logFile);
         }
     }
     private void refreshFileIndex(String file) {
@@ -665,9 +668,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                     System.out.println("SCAN COMPLETED: " + path);
                 }
             });
-
-
-        } catch (Exception ex) {
+       } catch (Exception ex) {
             ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
         }
@@ -695,51 +696,55 @@ public class GuestLinkMainActivity extends AppCompatActivity {
         mp.start();
     }
 
-    private JSONArray getRecords()
-    {
-        Context context = getApplicationContext();
-        context.getDatabasePath(DBHelper.DATABASE_NAME);
-        String myPath = context.getDatabasePath(DBHelper.DATABASE_NAME).toString();     // Set path to your database
-        String myTable = "guestids";
-        SQLiteDatabase myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+    private JSONArray getRecords(){     //Here we grab the GuestIDs table and output it to a JSON Array Object
+        try {
+            Context context = getApplicationContext();
+            context.getDatabasePath(DBHelper.DATABASE_NAME);
+            String myPath = context.getDatabasePath(DBHelper.DATABASE_NAME).toString();     // Set path to your database
+            String myTable = "guestids";
+            SQLiteDatabase myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
 
-        String searchQuery = "SELECT  * FROM " + myTable;
-        Cursor cursor = myDataBase.rawQuery(searchQuery, null );
+            String searchQuery = "SELECT  * FROM " + myTable;
+            Cursor cursor = myDataBase.rawQuery(searchQuery, null );
 
-        JSONArray resultSet  = new JSONArray();
+            JSONArray resultSet  = new JSONArray();
 
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            int totalColumn = cursor.getColumnCount();
-            JSONObject rowObject = new JSONObject();
-            for( int i=0 ;  i< totalColumn ; i++ )
-            {
-                if( cursor.getColumnName(i) != null )
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                int totalColumn = cursor.getColumnCount();
+                JSONObject rowObject = new JSONObject();
+                for( int i=0 ;  i< totalColumn ; i++ )
                 {
-                    try
+                    if( cursor.getColumnName(i) != null )
                     {
-                        if( cursor.getString(i) != null )
+                        try
                         {
-                            Log.d("TAG_NAME", cursor.getString(i) );
-                            rowObject.put(cursor.getColumnName(i) ,  cursor.getString(i) );
+                            if( cursor.getString(i) != null )
+                            {
+                                Log.d("TAG_NAME", cursor.getString(i) );
+                                rowObject.put(cursor.getColumnName(i) ,  cursor.getString(i) );
+                            }
+                            else
+                            {
+                                rowObject.put( cursor.getColumnName(i) ,  "" );
+                            }
                         }
-                        else
+                        catch( Exception e )
                         {
-                            rowObject.put( cursor.getColumnName(i) ,  "" );
+                            Log.d("TAG_NAME", e.getMessage()  );
                         }
-                    }
-                    catch( Exception e )
-                    {
-                        Log.d("TAG_NAME", e.getMessage()  );
                     }
                 }
+                resultSet.put(rowObject);
+                cursor.moveToNext();
             }
-            resultSet.put(rowObject);
-            cursor.moveToNext();
+            cursor.close();
+            Log.d("TAG_NAME", resultSet.toString() );
+            return resultSet;
+        } catch (Exception ex) {
+            Utilities.writeToLog(ex.toString(), logFile);
+            return null;
         }
-        cursor.close();
-        Log.d("TAG_NAME", resultSet.toString() );
-        return resultSet;
     }
 }
 
