@@ -8,6 +8,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:padding="10dp"
-        android:text="@string/welcome" />
+        android:text="Welcome" />
  
 </RelativeLayout>

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Kodak Alaris GuestLink</string>
-
     <string name="toast_not_mifare_classic">Not Mifare Classic card!</string>
     <string name="guest_id">Guest ID:</string>
     <string name="title_activity_settings">Settings</string>
@@ -14,11 +13,17 @@
     <string name="selectLocation">Select Location</string>
     <string name="deviceName">Device Name</string>
     <string name="idLength">Guest ID Length</string>
-
-    </string>
-
-
     <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="multi_select_list_preference_default_value" />
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="title_activity_link_camera">Link Camera</string>
+    <string name="title_activity_message">Message</string>
+    <string name="title_activity_setup">GuestLink Setup</string>
+    <string name="photographer_prompt">Choose a Photographer</string>
+    <string name="location_prompt">Choose a Location</string>
+    <string name="subject_prompt">Choose a Subject</string>
+    <string name="guestidlength_prompt">0</string>
+
     <string-array name="pref_sync_frequency_titles">
         <item>15 minutes</item>
         <item>30 minutes</item>
@@ -27,6 +32,7 @@
         <item>6 hours</item>
         <item>Never</item>
     </string-array>
+
     <string-array name="pref_sync_frequency_values">
         <item>15</item>
         <item>30</item>
@@ -48,18 +54,6 @@
         <item>3</item>
     </string-array>
 
-    <string-array name="multi_select_list_preference_default_value" />
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-     <string name="title_activity_link_camera">Link Camera</string>
-    <string name="title_activity_message">Message</string>
-    <string name="title_activity_setup">GuestLink Setup</string>
-    <string name="photographer_prompt">Choose a Photographer</string>
-    <string name="location_prompt">Choose a Location</string>
-    <string name="subject_prompt">Choose a Subject</string>
-    <string name="guestidlength_prompt">0</string>
-
     <string-array name="guestidlengths">
         <item>0</item>
         <item>8</item>
@@ -70,8 +64,4 @@
         <item>32</item>
         <item>36</item>
     </string-array>
-
-
-
-
 </resources>

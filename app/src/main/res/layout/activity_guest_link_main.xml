@@ -17,17 +17,20 @@
         android:layout_alignStart="@+id/lblSubjects"
         android:layout_marginBottom="15dp"
         android:text="@string/location"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/lblSubjects"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/lblLocation"
+        android:layout_above="@+id/lblPhotographer"
         android:layout_alignStart="@+id/lblPhotographer"
-        android:layout_marginBottom="15dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="55dp"
         android:text="Subject(s):"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtGuestID"
@@ -41,9 +44,9 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:layout_above="@+id/lblSubjects"
+        android:layout_below="@+id/lblGuestID"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginTop="14dp" />
 
     <TextView
         android:id="@+id/lblGuestID"
@@ -51,9 +54,8 @@
         android:layout_height="wrap_content"
         android:text="@string/guest_id"
         android:textColor="@android:color/white"
-        android:layout_above="@+id/txtGuestID"
-        android:layout_alignEnd="@+id/textClock"
-        android:layout_marginBottom="14dp" />
+        android:layout_alignBottom="@+id/btnLink"
+        android:layout_alignEnd="@+id/textClock" />
 
     <ImageButton
         android:id="@+id/btnExit"
@@ -151,7 +153,8 @@
         android:layout_alignStart="@+id/lblTotGuestIDs"
         android:layout_marginBottom="15dp"
         android:text="Photographer:"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/lblTotGuestIDs"
@@ -162,15 +165,17 @@
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="10dp"
         android:text="Total Guest ID Scans:"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/lblCamSerial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="55dp"
         android:text="Linked Camera:"
         android:textColor="@android:color/white"
+        android:textSize="16sp"
         android:layout_above="@+id/btnSetup"
         android:layout_alignStart="@+id/lblTotGuestIDs" />
 
@@ -193,7 +198,8 @@
         android:layout_marginRight="10dp"
         android:text="No Subjects"
         android:textAlignment="textEnd"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtLocation"
@@ -204,7 +210,8 @@
         android:layout_alignStart="@+id/txtSubjects"
         android:text="No Location"
         android:textAlignment="textEnd"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtPhotographer"
@@ -214,7 +221,8 @@
         android:layout_alignTop="@+id/lblPhotographer"
         android:text="No Photographer"
         android:textAlignment="textEnd"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtTotScans"
@@ -224,7 +232,8 @@
         android:layout_alignTop="@+id/lblTotGuestIDs"
         android:text="0"
         android:textAlignment="textEnd"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtCamSerial"
@@ -234,7 +243,8 @@
         android:layout_alignTop="@+id/lblCamSerial"
         android:text="123456789"
         android:textAlignment="textEnd"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtDeviceName"
