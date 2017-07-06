@@ -3,6 +3,7 @@ package guestlink.kodakalaris.com.guestlink;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -28,9 +29,6 @@ public class LinkCamera extends Activity {
          /* Set the app into full screen mode */
         getWindow().getDecorView().setSystemUiVisibility(flags);
 
-        //Disable Keyboard Input for Guest ID value to prevent barcode scan and soft keyboard
-        TextView csnBox = (TextView) findViewById((R.id.txtCamSerial));
-        //csnBox.setKeyListener(null);
   }
     public void btnOK_Click(View view){
 
