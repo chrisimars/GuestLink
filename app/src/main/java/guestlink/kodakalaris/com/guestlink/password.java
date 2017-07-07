@@ -1,21 +1,25 @@
 package guestlink.kodakalaris.com.guestlink;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class password extends AppCompatActivity {
     EditText txtPassword;
     private String logFile =  "sdcard/guestlink/guestLinkLog.txt";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
        txtPassword = (EditText) findViewById(R.id.txtPassword);
-    }
+       }
 
     public void btnOK_Click(View view){
        try {
@@ -37,6 +41,8 @@ public class password extends AppCompatActivity {
                         switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
                                 txtPassword.requestFocus();
+                                txtPassword.setText("");
+
                         }
                     }
                 });

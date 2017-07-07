@@ -38,7 +38,7 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
             dialog.setTitle(title);
             dialog.setMessage(message);
             dialog.setPositiveButton("Ok", onClickListener);
-            dialog.setNegativeButton("Cancel", null);
+            //dialog.setNegativeButton("Cancel", null);
             dialog.show();
         } catch (Exception e) {
             e.printStackTrace();

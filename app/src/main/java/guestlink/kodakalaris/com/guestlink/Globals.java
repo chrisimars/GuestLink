@@ -15,6 +15,8 @@ public class Globals {
     private String subjects;
     private String guestIdLength = "0";
     private String deviceName;
+    private boolean wirelessMode = false;
+
 
     // Restrict the constructor from being instantiated
     private Globals(){}
@@ -50,6 +52,13 @@ public class Globals {
     }
     public String getSubjects(){
         return this.subjects;
+    }
+
+    public void setWireless(boolean d){
+        this.wirelessMode=d;
+    }
+    public boolean getWireless(){
+        return this.wirelessMode;
     }
     public static synchronized Globals getInstance(){
         if(instance==null){

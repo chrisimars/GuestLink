@@ -32,7 +32,6 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,6 +63,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     private String lastGuestID = "", metaData = "", camSerial = "", deviceName = "Scan_", logFile = "/sdcard/guestlink/guestLinkLog.txt";
     private DBHelper dbHelper;
     private JSONArray guestRecords;
+    private boolean wireless = false;
 
     private final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -87,6 +87,10 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_guest_link_main);
             //Globals g = Globals.getInstance();     //Get a n instance of the Global Variables
             SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
+            sharedPreferences.edit().putString("useWireless", "false").apply();
+
+            ImageView wifi = (ImageView)findViewById(R.id.imgWiFi);
+            wifi.setVisibility((View.INVISIBLE));
 
 //*********************************************************************
             //Get the Device MAC Address to use in Guest ID Filename, save it to shared preferences
@@ -170,6 +174,10 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             TextView txtDate = (TextView) findViewById(R.id.txtDate);
             String ct = DateFormat.getDateInstance().format(new Date());
             txtDate.setText(ct);
+
+            //*********** Populate GUI with the Version *************
+            TextView version =  (TextView)findViewById(R.id.txtVersion);
+            version.setText("Version: " + BuildConfig.VERSION_NAME);
 
             //*** Check the External Storage for Read Write Access ***
             if (!Utilities.isExternalStorageWritable()) {
@@ -495,6 +503,8 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             subjects = "Test Subject"; //sharedPreferences.getString("subjects", "");
             metaData = photographer + "," + eventID + "," + location + "," + subjects;
             Utilities.writeToLog("Metadata String = " + metaData, logFile);
+            wireless = sharedPreferences.getBoolean("wirelessMode", false);
+
         } catch (Exception ex) {
             ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
@@ -504,6 +514,8 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     // }
     private void updateDispayValues() {
         try {
+            ImageView wifi = (ImageView)findViewById(R.id.imgWiFi);
+
             TextView text = (TextView) findViewById(R.id.txtPhotographer);
             text.setText(photographer);
 
@@ -528,6 +540,12 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
             TextView e = (TextView) findViewById((R.id.txtGuestID));
             e.setInputType(InputType.TYPE_NULL);
+
+            if (!wireless){
+                wifi.setVisibility((View.INVISIBLE));
+            }else{
+                wifi.setVisibility((View.VISIBLE));
+            }
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -642,6 +660,9 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
+
+    //This method is to tell android to update the file index of the files located in
+    // the guestlink folder on External Storage so they get refreshed for windows explorer
     private void refreshFileIndex(String file) {
         try {
             File f = new File(file);
@@ -670,10 +691,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
-    public static void disableSoftInput(EditText editText) {
-            editText.setRawInputType(InputType.TYPE_CLASS_TEXT);
-            editText.setTextIsSelectable(true);
-    }
+
     private void badVibrate(){
         Vibrator vibrator;
         vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
@@ -743,6 +761,8 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             return null;
         }
     }
+
+
 }
 
 

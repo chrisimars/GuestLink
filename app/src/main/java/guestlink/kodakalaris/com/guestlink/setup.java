@@ -46,7 +46,7 @@ public class setup extends AppCompatActivity {
         //Get instances of the Spinners and apply OnItemSelectedListener on it
         Spinner spinPhotographer = (Spinner) findViewById(R.id.spinPhotographer);
         Spinner spinLocation = (Spinner) findViewById(R.id.spinLocation);
-        Spinner spinGuestIdLength = (Spinner) findViewById(R.id.spinGuestidLength);
+
 
         //Populate Spinners
         populateSpinner("Photographers");
@@ -114,10 +114,6 @@ public class setup extends AppCompatActivity {
                 t.setLocation(valueOf(spin.getSelectedItem()));
                 String h = t.getPhotographer();
                 sharedPreferences.edit().putString("locationName", t.getLocation()).apply();
-
-                spin = (Spinner) findViewById(R.id.spinGuestidLength);
-                t.setguestIdLength(valueOf(spin.getSelectedItem()));
-                sharedPreferences.edit().putString("guestIdLength", t.getguestIdLength()).apply();
 
                 EditText v = (EditText) findViewById(R.id.editDeviceName);
                 String name = v.getText().toString();

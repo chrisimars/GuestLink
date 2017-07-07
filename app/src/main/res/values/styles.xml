@@ -27,8 +27,10 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="my_checkbox_style">
+        <item name="buttonTint">#fff</item>
+    </style>
 </resources>
 

@@ -32,17 +32,6 @@
         android:popupBackground="@color/white"
         android:visibility="visible" />
 
-    <Spinner
-        android:id="@+id/spinGuestidLength"
-        android:layout_width="275dp"
-        android:layout_height="35dp"
-        android:layout_alignStart="@+id/lblGuestIdLength"
-        android:layout_below="@+id/lblGuestIdLength"
-        android:layout_marginTop="2dp"
-        android:background="@color/white"
-        android:entries="@array/guestidlengths"
-        android:popupBackground="@color/white" />
-
     <Button
         android:id="@+id/btnSave"
         android:layout_width="80dp"
@@ -56,8 +45,8 @@
     <Button
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignBottom="@+id/btnSave"
-        android:layout_alignStart="@+id/spinGuestidLength"
+        android:layout_alignBottom="@+id/btnSysSetup"
+        android:layout_alignEnd="@+id/lblLocation"
         android:background="@drawable/exitup"
         android:elevation="0dp"
         android:onClick="cancel"
@@ -110,27 +99,40 @@
         android:textColor="@android:color/black"
         tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/lblGuestIdLength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/spinLocation"
-        android:layout_below="@+id/spinLocation"
-        android:layout_marginTop="22dp"
-        android:text="@string/idLength"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
-
     <Button
         android:id="@+id/btnSysSetup"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignBottom="@+id/btnSave"
-        android:layout_marginStart="-5dp"
-        android:layout_toEndOf="@+id/lblGuestIdLength"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/datasetuplup"
         android:enabled="true"
         android:onClick="getSysSetup" />
+
+    <EditText
+        android:id="@+id/txtSubjects"
+        android:layout_width="225dp"
+        android:layout_height="125dp"
+        android:layout_alignStart="@+id/spinLocation"
+        android:layout_below="@+id/spinLocation"
+        android:layout_marginTop="45dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/lblSubjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/lblLocation"
+        android:layout_below="@+id/spinLocation"
+        android:layout_marginTop="21dp"
+        android:text="Subject(s)"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_alignEnd="@+id/lblPhotographer" />
 
 
 </android.widget.RelativeLayout>
