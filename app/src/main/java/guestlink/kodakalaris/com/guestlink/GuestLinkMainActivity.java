@@ -555,10 +555,13 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     private void toast(String message){
         try {
             Toast toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.setGravity(Gravity.CENTER, 0, -135);
+
             TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
             v.setBackgroundColor(Color.GREEN);
             v.setTextColor(Color.BLACK);
+            v.setTextSize(26);
+
             toast.show();
         } catch (Exception ex) {
             ex.printStackTrace();

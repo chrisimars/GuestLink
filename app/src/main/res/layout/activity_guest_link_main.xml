@@ -38,16 +38,15 @@
         style="@android:style/Widget.AutoCompleteTextView"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lblGuestID"
+        android:layout_centerHorizontal="true"
         android:backgroundTint="@color/white"
-        android:ems="8"
+        android:ems="22"
         android:inputType="none"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:layout_below="@+id/lblGuestID"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/lblGuestID"
@@ -109,9 +108,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textClock"
         android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
+        android:layout_centerInParent="false"
         android:layout_toEndOf="@+id/lblCamSerial"
         android:text="Currrent Date"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         tools:ignore="HardcodedText" />
@@ -194,7 +194,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnCloseSession"
         android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
+        android:layout_centerInParent="false"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
@@ -216,14 +217,14 @@
         android:id="@+id/txtLocation"
         android:layout_width="120sp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/lblLocation"
-        android:layout_alignBottom="@+id/lblLocation"
-        android:layout_alignStart="@+id/txtSubjects"
         android:text="No Location"
         android:textAlignment="textEnd"
         android:textColor="@android:color/white"
         android:textSize="16sp"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:layout_alignBaseline="@+id/lblLocation"
+        android:layout_alignBottom="@+id/lblLocation"
+        android:layout_alignStart="@+id/txtSubjects" />
 
     <TextView
         android:id="@+id/txtPhotographer"
@@ -269,6 +270,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
         android:text="Device Name"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         tools:ignore="HardcodedText" />
