@@ -89,12 +89,12 @@
         android:id="@+id/lblpdaName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lblPhotographer"
         android:layout_marginTop="35dp"
         android:text="@string/deviceName"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/lblPhotographer" />
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/editDeviceName"
@@ -114,20 +114,22 @@
         android:id="@+id/lblGuestIdLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/spinLocation"
+        android:layout_below="@+id/spinLocation"
         android:layout_marginTop="22dp"
         android:text="@string/idLength"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        android:layout_below="@+id/spinLocation"
-        android:layout_alignStart="@+id/spinLocation" />
+        android:textSize="16sp" />
 
     <Button
+        android:id="@+id/btnSysSetup"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignBottom="@+id/btnSave"
         android:layout_marginStart="-5dp"
         android:layout_toEndOf="@+id/lblGuestIdLength"
         android:background="@drawable/datasetuplup"
+        android:enabled="true"
         android:onClick="getSysSetup" />
 
 

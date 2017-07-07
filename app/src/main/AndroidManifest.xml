@@ -36,16 +36,17 @@
         <activity
             android:name=".LinkCamera"
             android:label="Link Camera" />
-        //android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
         <activity
             android:name=".setup"
             android:label="GuestLink Setup" />
-        android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".Password" />
-        <activity
-            android:name=".systemSettings"
-            android:label="@string/title_activity_system_settings" />
-        <activity android:name=".sysSetup"></activity>
-    </application>
 
+        <activity
+        android:name=".password"
+        android:label="Password" />
+
+        <activity
+            android:name=".sysSetup"
+            android:label="@string/title_activity_system_settings" />
+    </application>
 </manifest>

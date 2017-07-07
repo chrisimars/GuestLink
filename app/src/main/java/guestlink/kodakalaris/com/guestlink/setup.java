@@ -8,11 +8,14 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -97,7 +100,6 @@ public class setup extends AppCompatActivity {
     }
 
     public void save(View view){
-
         try {
             boolean ret = true;
             if (ret = true) {
@@ -148,8 +150,7 @@ public class setup extends AppCompatActivity {
                 }
             });
         }
-
-        return mResult;
+       return mResult;
     }
     public void cancel(View view){
         super.onBackPressed();
@@ -157,32 +158,32 @@ public class setup extends AppCompatActivity {
     // Method to handle the Click Event on System Setup Button
     public void getSysSetup(View view) {
         try {
-            // Create The  Intent and Start The Activity to scan the camera Barcode
-            Intent intentGetSysSetup = new Intent(this, sysSetup.class);
-            startActivityForResult(intentGetSysSetup, 2);// Activity is started with requestCode 2
+            // Create The  Intent and Start The Activity to go to System Setup
+            Intent intentGetSysSetup = new Intent(this, password.class);
+            startActivityForResult(intentGetSysSetup, 2);
         } catch (Exception ex) {
             ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
 
-
-    // SystemSetup Callback
-    // Call Back method  to get the Message form other Activity    override the method
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
             super.onActivityResult(requestCode, resultCode, data);
+            SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
             // check if the request code is same as what is passed  here it is 2
             if (requestCode == 2) {
-                // Call the System Setup Activity
+                // fetch the message String
                 String message = data.getStringExtra("MESSAGE");
-                getSystemSetup();
-
-                Utilities.writeToLog("User Entered System Setup", logFile);
+                    if (message.equals("passwordOK")){
+                        // Create The  Intent and Start The Activity to scan the camera Barcode
+                        Intent intentGetSysSetup = new Intent(this, sysSetup.class);
+                        startActivityForResult(intentGetSysSetup, 2);
+                        Utilities.writeToLog("User entered system Setup.", logFile);
+                    }
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
@@ -203,18 +204,6 @@ public class setup extends AppCompatActivity {
     protected void onPause() {
         try {
             super.onPause();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Utilities.writeToLog(ex.toString(), logFile);
-        }
-    }
-    // Method to handle the Click Event on Setup Button
-    public void getSystemSetup() {
-        try {
-            // Create The  Intent and Start The Activity to scan the camera Barcode
-            Intent intentGetSetup = new Intent(this, sysSetup.class);
-            startActivity(intentGetSetup);
 
         } catch (Exception ex) {
             ex.printStackTrace();

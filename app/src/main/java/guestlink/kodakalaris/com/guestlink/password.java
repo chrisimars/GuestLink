@@ -26,12 +26,12 @@ public class password extends AppCompatActivity {
                 Intent intentMessage=new Intent();
 
                 // put the message to return as result in Intent
-                intentMessage.putExtra("MESSAGE","PasswordOK");
+                intentMessage.putExtra("MESSAGE","passwordOK");
                 // Set The Result in Intent
                 setResult(2,intentMessage);
                 super.onBackPressed();
            }else{
-                Utilities.showDialog(this, "Incorrect Password", "Please Enter the Correct PAssword.", new DialogInterface.OnClickListener() {
+                Utilities.showDialog(this, "Incorrect Password", "Please Enter the Correct Password.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {

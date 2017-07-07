@@ -408,8 +408,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             // Create The  Intent and Start The Activity to scan the camera Barcode
             Intent intentGetSetup = new Intent(this, setup.class);
             startActivity(intentGetSetup);
-            //startActivityForResult(intentGetCamera, 2);// Activity is started with requestCode 2
-        } catch (Exception ex) {
+            } catch (Exception ex) {
             ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
         }
