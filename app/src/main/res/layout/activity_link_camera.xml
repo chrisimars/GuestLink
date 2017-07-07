@@ -70,6 +70,7 @@
         android:enabled="true"
         android:focusable="false"
         android:inputType="textNoSuggestions"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp" />
 

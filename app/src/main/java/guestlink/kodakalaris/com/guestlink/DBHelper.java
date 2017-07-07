@@ -1,7 +1,10 @@
 package guestlink.kodakalaris.com.guestlink;
 /**
  * Created by Donald Chapman1 on 6/30/2017.
+ * This helper class extends the SQLiteOpenHelper and gives easy access to
+ * write to the database.
  */
+
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
