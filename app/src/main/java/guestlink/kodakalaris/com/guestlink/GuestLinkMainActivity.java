@@ -631,6 +631,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                             toast("Session Closed");
                             Utilities.writeToLog("User Closed Session", logFile);
                             dbHelper.createNew();
+                            refreshFileIndex(Environment.getExternalStorageDirectory().getPath() + "/guestLink/json.txt");
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
