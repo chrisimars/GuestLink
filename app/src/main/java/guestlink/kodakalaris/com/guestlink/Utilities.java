@@ -15,9 +15,9 @@ import java.util.Calendar;
  * Created by Donald Chapman1 on 6/16/2017.
  */
 
-public final class Utilities {
+final class Utilities {
 public String guestidFile = "";
-private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
+private String logFile = Environment.getExternalStorageDirectory().getPath() + "/guestlink/guestLinkLog.txt";
 
     public static void showYesNoDialog(Context context, String title, String message, DialogInterface.OnClickListener onClickListener) {
         try {
@@ -56,13 +56,13 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
         return false;
     }
 
-    public static boolean writeGuestIdFile(String camSerial, String lastGuestID, String fileName, String dateTime, String metaData) {
+    public static void writeGuestIdFile(String camSerial, String lastGuestID, String fileName, String dateTime, String metaData) {
         //SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd");
         //Date now = new Date();
 
         try {
             //Make sure the directory exists
-            File file = new File("/sdcard/guestlink");
+            File file = new File(Environment.getExternalStorageDirectory().getPath() + "/guestlink");
             if (!file.exists()) {
                 file.mkdirs();
             }
@@ -79,11 +79,8 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
             writer.append(sBody);
             writer.flush();
             writer.close();
-            return true;
-
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
     }
     /* Checks if external storage is available for read and write */
@@ -112,7 +109,7 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
         }
         return false;
     }
-    public static boolean writeToLog(String message, String fileName) {
+    public static void writeToLog(String message, String fileName) {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat ct = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
         String time = ct.format(cal.getTime());
@@ -134,11 +131,8 @@ private String logFile = "/sdcard/guestlink/guestLinkLog.txt";
             writer.append(sBody);
             writer.flush();
             writer.close();
-            return true;
-
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
     }
 

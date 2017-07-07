@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String GUESTID_COLUMN_LOCATION = "location";
     private static final String GUESTID_COLUMN_SUBJECTS = "subjects";
     private static final String GUESTID_COLUMN_EVENTID = "eventid";
-    private String logFile = Environment.getExternalStorageDirectory() + "guestlink/guestLinkLog.txt";
+    private final String logFile = Environment.getExternalStorageDirectory() + "guestlink/guestLinkLog.txt";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME , null, DATABASE_VERSION);
@@ -65,7 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
-    public boolean insertRecord(String deviceid, String cameraid, String datetime, String guestid, String photographer, String location,
+    public void insertRecord(String deviceid, String cameraid, String datetime, String guestid, String photographer, String location,
                                 String subjects, String eventid) {
         try {
             SQLiteDatabase db = this.getWritableDatabase();
@@ -80,11 +80,9 @@ public class DBHelper extends SQLiteOpenHelper {
             record.put(GUESTID_COLUMN_EVENTID, eventid);
 
             db.insert(GUESTID_TABLE_NAME, null, record);
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
-        }
+         }
     }
 
 }

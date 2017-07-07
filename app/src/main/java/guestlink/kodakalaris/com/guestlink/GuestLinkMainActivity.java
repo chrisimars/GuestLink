@@ -59,8 +59,17 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     private String[][] mTechList;
     private static final int GetMessage = 2;
     private Integer totScans = 0, guestIdLength = 16;
-    private String photographer = "Photographer", location = "Location 1", subjects = "Moe", eventID = "123456", guestidFile = "", deviceID = "";
-    private String lastGuestID = "", metaData = "", camSerial = "", deviceName = "Scan_", logFile = "/sdcard/guestlink/guestLinkLog.txt";
+    private String photographer = "Photographer";
+    private String location = "Location 1";
+    private String subjects = "Moe";
+    private final String eventID = "123456";
+    private String guestidFile = "";
+    private String deviceID = "";
+    private String lastGuestID = "";
+    private String metaData = "";
+    private String camSerial = "";
+    private String deviceName = "Scan_";
+    private final String logFile = Environment.getExternalStorageDirectory().getPath() + "/guestlink/guestLinkLog.txt";
     private DBHelper dbHelper;
     private JSONArray guestRecords;
     private boolean wireless = false;
@@ -76,7 +85,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         try {
             //Make sure the storage directory exists
-            File file = new File("/sdcard/guestlink");
+            File file = new File(Environment.getExternalStorageDirectory().getPath() + "/guestlink");
             if (!file.exists()) {
                 file.mkdirs();
             }
@@ -98,7 +107,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
             //MAC Address replaced with Android_ID because MAC is not available with radio turned off
             deviceID = (Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase());
-            guestidFile = "/sdcard/guestlink/" + deviceID + ".txt";
+            guestidFile = Environment.getExternalStorageDirectory().getPath() + "/guestlink/" + deviceID + ".txt";
             sharedPreferences.edit().putString("guestidFile", guestidFile).apply();
 
             //Get Other shared Metadata from shared preferences run if any
@@ -612,10 +621,10 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
 
                             //If we close the session, refresh the folder and file index
-                            refreshFileIndex(Environment.getExternalStorageDirectory().getPath() + "/guestlink");//Yes button clicked
-                            refreshFileIndex(newFile);//Yes button clicked
+                            refreshFileIndex(Environment.getExternalStorageDirectory().getPath() + "/guestlink");
+                            refreshFileIndex(newFile);
                             refreshFileIndex(logFile);
-                            refreshFileIndex("/sdcard/guestlink/GuestIDs.db");
+                            refreshFileIndex(Environment.getExternalStorageDirectory().getPath() + "/guestlink/GuestIDs.db");
 
                             //Reset values and clear display
                             totScans = 0;

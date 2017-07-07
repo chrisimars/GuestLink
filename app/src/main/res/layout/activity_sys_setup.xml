@@ -62,7 +62,7 @@
         android:layout_alignStart="@+id/button3"
         android:layout_marginTop="38dp"
         android:backgroundTint="@color/white"
-        android:text="Use Wireless"
+        android:text="@string/useWireless"
         android:textColor="@color/white"
         android:textSize="20sp"
         style="@style/my_checkbox_style"/>

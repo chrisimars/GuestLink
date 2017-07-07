@@ -10,19 +10,26 @@
     tools:ignore="HardcodedText">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignEnd="@+id/txtMessage"
+        android:id="@+id/btnOK"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="62dp"
-        android:layout_marginEnd="5dp"
-        android:focusable="false"
-        android:onClick="btnOK_Click"
-        android:text="OK"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="26dp"
+        android:background="@drawable/checklup"
+        android:onClick="btnOK_Click" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/btnOK"
+        android:layout_alignStart="@+id/txtCamSerial"
+        android:background="@drawable/exitup"
+        android:elevation="0dp"
+        android:onClick="btnCancel_Click"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
 
     <TextView
         android:id="@+id/txtMessage"
@@ -39,35 +46,6 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/txtCamSerial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtMessage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="84dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:enabled="true"
-        android:focusable="false"
-        android:inputType="textNoSuggestions"
-        android:textAlignment="center"
-        android:textSize="24sp" />
-
-    <Button
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignBottom="@+id/button"
-        android:layout_alignStart="@+id/txtCamSerial"
-        android:layout_marginBottom="0dp"
-        android:layout_marginStart="20dp"
-        android:focusable="false"
-        android:onClick="btnCancel_Click"
-        android:text="Cancel"
-        android:textSize="13sp"
-        tools:textStyle="bold"
-        tools:ignore="HardcodedText" />
-
-    <EditText
         android:id="@+id/tempText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,5 +57,20 @@
         android:ems="10"
         android:focusable="true"
         android:inputType="textNoSuggestions" />
+
+    <EditText
+        android:id="@+id/txtCamSerial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMessage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:enabled="true"
+        android:focusable="false"
+        android:inputType="textNoSuggestions"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
 </android.widget.RelativeLayout>

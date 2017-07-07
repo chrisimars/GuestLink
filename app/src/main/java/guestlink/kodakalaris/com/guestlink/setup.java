@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,8 +26,8 @@ import java.util.Collections;
 import static java.lang.String.valueOf;
 
 public class setup extends AppCompatActivity {
-    private String logFile =  "sdcard/guestlink/guestLinkLog.txt";
-    final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+    private final String logFile =  Environment.getExternalStorageDirectory().getPath() + "/guestlink/guestLinkLog.txt";
+    private final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -57,7 +58,7 @@ public class setup extends AppCompatActivity {
     }
 
     private void populateSpinner(String spinnerName) {
-        String fileName = ("/sdcard/guestlink/" + spinnerName + ".txt");
+        String fileName = (Environment.getExternalStorageDirectory().getPath() + "/guestlink/" + spinnerName + ".txt");
         String line;
         ArrayList<String> names = new ArrayList<String>();
 

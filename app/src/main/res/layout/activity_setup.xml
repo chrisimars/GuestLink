@@ -120,7 +120,7 @@
         android:ems="10"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/lblSubjects"
@@ -129,7 +129,7 @@
         android:layout_alignStart="@+id/lblLocation"
         android:layout_below="@+id/spinLocation"
         android:layout_marginTop="21dp"
-        android:text="Subject(s)"
+        android:text="@string/subjects"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:layout_alignEnd="@+id/lblPhotographer" />

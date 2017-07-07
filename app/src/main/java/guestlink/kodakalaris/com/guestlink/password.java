@@ -10,7 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class password extends AppCompatActivity {
-    EditText txtPassword;
+    private EditText txtPassword;
     private String logFile =  "sdcard/guestlink/guestLinkLog.txt";
 
 
