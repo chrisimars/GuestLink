@@ -32,7 +32,7 @@ public class getSubjects extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listView);
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), subjectNames);
         listView.setAdapter(customAdapter);
-       
+
 
 
     }
@@ -57,13 +57,26 @@ public class getSubjects extends AppCompatActivity {
         return null;
     }
     public void cancelMe(View view){
-        finishAndRemoveTask();
+        Utilities.showYesNoDialog(this, "Exit", "Are You Sure You Want to Exit without Saving Your Selections?", new DialogInterface.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        finishAndRemoveTask();
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        });
    }
 
     public void saveMe(View view){
         final SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
        try {
-            Utilities.showYesNoDialog(this, "Exit", "Are You Sure You Want to Exit Settings without Saving?", new DialogInterface.OnClickListener() {
+            Utilities.showYesNoDialog(this, "Save Settings", "Are You Sure You Want to Save Settings and Exit?", new DialogInterface.OnClickListener() {
                 @SuppressLint("SetTextI18n")
                 @Override
 
