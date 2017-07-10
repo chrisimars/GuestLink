@@ -88,7 +88,7 @@
         android:id="@+id/lblpdaName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="@string/deviceName"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -128,10 +128,10 @@
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:layout_above="@+id/btnSave"
+        android:layout_marginBottom="22dp"
+        android:layout_above="@+id/button"
         android:layout_alignStart="@+id/lblSubjects"
-        android:layout_marginBottom="15dp"
-        android:layout_alignEnd="@+id/btnSysSetup" />
+        android:layout_alignEnd="@+id/button" />
 
     <TextView
         android:id="@+id/lblSubjects"

@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class password extends AppCompatActivity {
     private EditText txtPassword;
-    private String logFile =  "sdcard/guestlink/guestLinkLog.txt";
+    private final String logFile =  "sdcard/guestlink/guestLinkLog.txt";
 
 
     @Override
@@ -24,7 +24,6 @@ public class password extends AppCompatActivity {
 
     public void btnOK_Click(View view){
        try {
-            String pw = "";
 
             if(txtPassword.getText().toString().equals("imagic")) {
                 Intent intentMessage=new Intent();

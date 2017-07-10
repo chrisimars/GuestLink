@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
 import android.os.Environment;
 
-public class DBHelper extends SQLiteOpenHelper {
+class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = Environment.getExternalStorageDirectory().getPath() + "/guestlink/GuestIDs.db";
     private static final int DATABASE_VERSION = 1;
     private static final String GUESTID_TABLE_NAME = "guestids";

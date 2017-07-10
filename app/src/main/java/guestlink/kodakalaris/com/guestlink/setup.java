@@ -88,8 +88,6 @@ public class setup extends AppCompatActivity {
 
     public void save(View view){
         try {
-            boolean ret = true;
-            if (ret = true) {
                 Globals t = Globals.getInstance();  //Get a n instance of the Global Variables
                 SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
 
@@ -99,7 +97,6 @@ public class setup extends AppCompatActivity {
 
                 spin = (Spinner) findViewById(R.id.spinLocation);
                 t.setLocation(valueOf(spin.getSelectedItem()));
-                String h = t.getPhotographer();
                 sharedPreferences.edit().putString("locationName", t.getLocation()).apply();
 
                 EditText v = (EditText) findViewById(R.id.editDeviceName);
@@ -107,7 +104,6 @@ public class setup extends AppCompatActivity {
                 t.setdeviceName(v.getText().toString());
                 sharedPreferences.edit().putString("deviceName", name).apply();
                 finish();
-            }
         } catch (Exception ex) {
             ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
@@ -171,7 +167,6 @@ public class setup extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
             super.onActivityResult(requestCode, resultCode, data);
-            SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
             // check if the request code is same as what is passed  here it is 2
             if (requestCode == 2) {
                 // fetch the message String
