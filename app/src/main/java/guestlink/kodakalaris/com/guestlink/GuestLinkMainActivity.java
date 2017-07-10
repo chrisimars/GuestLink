@@ -90,6 +90,8 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                 file.mkdirs();
             }
             dbHelper = new DBHelper(this);
+            Utilities.createDefatulMetadataFiles();
+
 
             Utilities.writeToLog("\r\n*************************\r\nApplication Startup\r\n *************************", logFile);
             super.onCreate(savedInstanceState);
@@ -109,6 +111,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             deviceID = (Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID).toUpperCase());
             guestidFile = Environment.getExternalStorageDirectory().getPath() + "/guestlink/" + deviceID + ".txt";
             sharedPreferences.edit().putString("guestidFile", guestidFile).apply();
+
 
             //Get Other shared Metadata from shared preferences run if any
             getMetadata();
@@ -198,13 +201,13 @@ public class GuestLinkMainActivity extends AppCompatActivity {
 
             Utilities.writeToLog("Application OnCreate Completed", logFile);
             refreshFileIndex(logFile);
+
+            startLockTask();
         } catch (Exception ex) {
             ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
-
-
 
     @Override
     protected void onResume() {
@@ -217,7 +220,6 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
         }
-
         getMetadata();
         updateDispayValues();
     }
@@ -455,15 +457,19 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             if (requestCode == 2) {
                 // fetch the message String
                 String message = data.getStringExtra("MESSAGE");
+                if (message.equals("passwordOK")) {
+                    stopLockTask();
+                    finishAndRemoveTask();
+               } else {
+                    // Set the message string in textView
+                    TextView s = (TextView) findViewById(R.id.txtCamSerial);
+                    s.setText(message);
 
-                // Set the message string in textView
-                TextView s = (TextView) findViewById(R.id.txtCamSerial);
-                s.setText(message);
-
-                // Set the camera serial variable
-                camSerial = message;
-                sharedPreferences.edit().putString("camSerial", message).apply();
-                Utilities.writeToLog("New Camera Linked: " + camSerial, logFile);
+                    // Set the camera serial variable
+                    camSerial = message;
+                    sharedPreferences.edit().putString("camSerial", message).apply();
+                    Utilities.writeToLog("New Camera Linked: " + camSerial, logFile);
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -617,6 +623,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                             guestRecords = new JSONArray();
                             guestRecords = getRecords();
 
+                           // Take the JSON object and output it to a text file - developmewnt???
                             Utilities.writeToFile(guestRecords.toString());
 
 
@@ -625,6 +632,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                             refreshFileIndex(newFile);
                             refreshFileIndex(logFile);
                             refreshFileIndex(Environment.getExternalStorageDirectory().getPath() + "/guestlink/GuestIDs.db");
+                            refreshFileIndex(Environment.getExternalStorageDirectory().getPath() + "/guestLink/json.txt");
 
                             //Reset values and clear display
                             totScans = 0;
@@ -640,7 +648,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
                             toast("Session Closed");
                             Utilities.writeToLog("User Closed Session", logFile);
                             dbHelper.createNew();
-                            refreshFileIndex(Environment.getExternalStorageDirectory().getPath() + "/guestLink/json.txt");
+
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
@@ -656,16 +664,23 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
+
+
+
+
     public void btnExit_Click(View view) {
         try {
+            final Intent intentGetPassword = new Intent(this, password.class);
             Utilities.showYesNoDialog(this, "Exit GuestLink", "Are You Sure You Want to Exit GuestLink?", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which) {
                         case DialogInterface.BUTTON_POSITIVE:
+                            startActivityForResult(intentGetPassword, 2);
+
                             Utilities.writeToLog("User Exited Application", logFile);
                             refreshFileIndex(logFile);
-                            finishAndRemoveTask();
+                            //finishAndRemoveTask();
                     }
                 }
             });
@@ -673,6 +688,10 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
+
+
+
+
 
     //This method is to tell android to update the file index of the files located in
     // the guestlink folder on External Storage so they get refreshed for windows explorer
@@ -689,6 +708,10 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             ArrayList<String> toBeScanned = new ArrayList<String>();
             toBeScanned.add(logFile);
             toBeScanned.add(guestidFile);
+            toBeScanned.add(Environment.getExternalStorageDirectory().getCanonicalPath()   + "/guestlink/photographers.txt");
+            toBeScanned.add(Environment.getExternalStorageDirectory().getCanonicalPath()  + "/guestlink/locations.txt");
+            toBeScanned.add(Environment.getExternalStorageDirectory().getCanonicalPath()   + "/guestlink/subjects.txt");
+
             String[] toBeScannedStr = new String[toBeScanned.size()];
             toBeScannedStr = toBeScanned.toArray(toBeScannedStr);
 

@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static android.R.attr.data;
+
 /**
  * Created by Donald Chapman1 on 6/16/2017.
  */
@@ -155,5 +157,51 @@ private String logFile = Environment.getExternalStorageDirectory().getPath() + "
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
+    }
+    public static void createDefatulMetadataFiles(){
+        String photographers = Environment.getExternalStorageDirectory().getPath() + "/guestLink/photographers.txt";
+        String locations = Environment.getExternalStorageDirectory().getPath() + "/guestLink/locations.txt";
+        String subjects = Environment.getExternalStorageDirectory().getPath() + "/guestLink/subjects.txt";
+
+        try {
+            //Create the default photographers file
+            File datafile = new File(photographers);
+            if (!datafile.exists()) {
+                datafile.createNewFile();
+                FileWriter writer = new FileWriter(photographers, true);
+                writer.append("Photographer1" + "\r\n");
+                writer.append("Photographer2" + "\r\n");
+                writer.append("Photographer3" + "\r\n");
+                writer.flush();
+                writer.close();
+                }
+
+            datafile = new File(locations);
+            if (!datafile.exists()) {
+                datafile.createNewFile();
+            FileWriter writer = new FileWriter(locations, true);
+            writer.append("Location1" + "\r\n");
+            writer.append("Location2" + "\r\n");
+            writer.append("Location3" + "\r\n");
+            writer.flush();
+            writer.close();
+        }
+
+            datafile = new File(subjects);
+            if (!datafile.exists()) {
+                datafile.createNewFile();
+
+            FileWriter writer = new FileWriter(subjects, true);
+            writer.append("subject1"+ "\r\n");
+            writer.append("subject2"+ "\r\n");
+            writer.append("subject3"+ "\r\n");
+            writer.flush();
+            writer.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

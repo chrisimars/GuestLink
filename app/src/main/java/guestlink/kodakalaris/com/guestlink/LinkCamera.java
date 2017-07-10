@@ -32,34 +32,6 @@ public class LinkCamera extends Activity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         getWindow().getDecorView().setSystemUiVisibility(flags);
-
-        /*watcher = new TextWatcher(){
-            int _start;
-            int _end;
-            int _count;
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.length() > 0) {
-                    camSerial.removeTextChangedListener(watcher);
-                    //char lastCharacter = s.charAt(s.length() - 1);
-                    //if (lastCharacter == '\n') {
-                        String barcode = s.subSequence(0, s.length() - 1).toString();
-                        camSerial.setText("");
-                        camSerial.addTextChangedListener(watcher);
-                    //}
-                }
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                //camSerial.requestFocus();
-                //camSerial.setText(null);//add your logic here
-            }};
-        camSerial.addTextChangedListener(watcher);*/
     }
 
 
@@ -75,13 +47,16 @@ public class LinkCamera extends Activity {
             intentMessage.putExtra("MESSAGE",message);
             // Set The Result in Intent
             setResult(2,intentMessage);
-            super.onBackPressed();
+            //super.onBackPressed();
+
+            finishAndRemoveTask();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
   public void btnCancel_Click(View view){
-      super.onBackPressed();
+      //super.onBackPressed();
+      finishAndRemoveTask();
   }
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {

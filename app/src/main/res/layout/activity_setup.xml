@@ -25,12 +25,11 @@
         style="@style/Platform.Widget.AppCompat.Spinner"
         android:layout_width="275dp"
         android:layout_height="35dp"
-        android:layout_alignStart="@+id/spinPhotographer"
-        android:layout_below="@+id/spinPhotographer"
-        android:layout_marginTop="50dp"
         android:background="@color/white"
         android:popupBackground="@color/white"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_below="@+id/lblLocation"
+        android:layout_alignStart="@+id/lblLocation" />
 
     <Button
         android:id="@+id/btnSave"
@@ -56,34 +55,34 @@
         android:id="@+id/lblPhotographer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/spinPhotographer"
-        android:layout_below="@+id/editDeviceName"
         android:layout_marginTop="26dp"
         android:text="@string/photographer"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_below="@+id/editDeviceName"
+        android:layout_alignStart="@+id/spinPhotographer" />
 
     <TextView
         android:id="@+id/lblLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/spinLocation"
-        android:layout_below="@+id/spinPhotographer"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="20dp"
         android:text="@string/location"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_below="@+id/spinPhotographer"
+        android:layout_alignStart="@+id/spinPhotographer" />
 
     <TextView
         android:id="@+id/lblpdaName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/lblPhotographer"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="16dp"
         android:text="@string/deviceName"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/lblPhotographer" />
 
     <EditText
         android:id="@+id/editDeviceName"
@@ -113,26 +112,24 @@
         android:id="@+id/txtSubjects"
         android:layout_width="225dp"
         android:layout_height="125dp"
-        android:layout_alignStart="@+id/spinLocation"
-        android:layout_below="@+id/spinLocation"
-        android:layout_marginTop="45dp"
         android:background="@color/white"
         android:ems="10"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_above="@+id/btnSave"
+        android:layout_alignStart="@+id/lblSubjects"
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:id="@+id/lblSubjects"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/lblLocation"
-        android:layout_below="@+id/spinLocation"
-        android:layout_marginTop="21dp"
         android:text="@string/subjects"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_alignEnd="@+id/lblPhotographer" />
+        android:layout_above="@+id/txtSubjects"
+        android:layout_alignStart="@+id/spinLocation" />
 
 
 </android.widget.RelativeLayout>

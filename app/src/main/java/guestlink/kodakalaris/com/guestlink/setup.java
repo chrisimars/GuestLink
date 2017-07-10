@@ -1,6 +1,7 @@
 package guestlink.kodakalaris.com.guestlink;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,20 +10,16 @@ import android.graphics.Color;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import static java.lang.String.valueOf;
 
 public class setup extends AppCompatActivity {
@@ -31,22 +28,23 @@ public class setup extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup);
+        //setContentView(R.layout.activity_setup);
         Globals g = Globals.getInstance();  //Get a n instance of the Global Variables
         SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
          /* Set the app into full screen mode */
         //getWindow().getDecorView().setSystemUiVisibility(flags);
+        setContentView(R.layout.activity_setup);
 
         //Get instances of the Spinners and apply OnItemSelectedListener on it
         Spinner spinPhotographer = (Spinner) findViewById(R.id.spinPhotographer);
         Spinner spinLocation = (Spinner) findViewById(R.id.spinLocation);
 
-
         //Populate Spinners
-        populateSpinner("Photographers");
-        populateSpinner("Locations");
-
+        populateSpinner("photographers");
+        populateSpinner("locations");
         EditText devName = (EditText) findViewById(R.id.editDeviceName);
         devName.setText(sharedPreferences.getString("deviceName", "Scan_"));
     }
@@ -72,14 +70,14 @@ public class setup extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, names);
 
             switch (spinnerName) {
-                case "Photographers": {
+                case "photographers": {
                     //Get handle for spinner object
                     Spinner spinPhotographers = (Spinner) findViewById(R.id.spinPhotographer);
                     //Populate the spinner from the array
                     spinPhotographers.setAdapter(adapter);
                     //spinPhotographers.setOnItemSelectedListener(this);
                 }
-                case "Locations":{
+                case "locations":{
                     //Get handle for spinner object
                     Spinner spinLocations = (Spinner) findViewById(R.id.spinLocation);
                     //Populate the spinner from the array
@@ -144,12 +142,30 @@ public class setup extends AppCompatActivity {
        return mResult;
     }
     public void cancel(View view){
-        super.onBackPressed();
+        try {
+            Utilities.showYesNoDialog(this, "Exit", "Are You Sure You Want to Exit Settings without Saving?", new DialogInterface.OnClickListener() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            finishAndRemoveTask();
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
+                    }
+                }
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
     }
     // Method to handle the Click Event on System Setup Button
     public void getSysSetup(View view) {
         try {
-            // Create The  Intent and Start The Activity to go to System Setup
+            // Create The  Intent and Start The Activity to get the password
             Intent intentGetSysSetup = new Intent(this, password.class);
             startActivityForResult(intentGetSysSetup, 2);
         } catch (Exception ex) {
@@ -175,24 +191,6 @@ public class setup extends AppCompatActivity {
                     }
             }
         } catch (Exception ex) {
-            Utilities.writeToLog(ex.toString(), logFile);
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        try {
-            super.onResume();
-        /* Reset the app into full screen mode */
-            int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-            getWindow().getDecorView().setSystemUiVisibility(flags);
-        } catch (Exception ex) {
-            ex.printStackTrace();
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }

@@ -21,23 +21,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity android:name=".GuestLinkMainActivity">
             android:name=".GuestLinkMainActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.AppCompat.NoActionBar">
+            android:theme="@android:style/Theme.AppCompat.NoTitleBar">>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name=".LinkCamera"
             android:label="Link Camera"/>
 
         <activity
             android:name=".setup"
-            android:label="GuestLink Setup"/>
+            android:label="GuestLink Setup"
+            android:windowSoftInputMode="adjustNothing"/>
 
         <activity
         android:name=".password"
@@ -45,6 +49,7 @@
 
         <activity
             android:name=".sysSetup"
-            android:label="@string/title_activity_system_settings"/>
+            android:label="@string/title_activity_system_settings"
+            android:windowSoftInputMode="adjustNothing"/>
     </application>
 </manifest>
