@@ -11,11 +11,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import static android.R.attr.data;
-
-/**
- * Created by Donald Chapman1 on 6/16/2017.
- */
+ //Created by Donald Chapman1 on 6/16/2017.
 
 final class Utilities {
 public String guestidFile = "";

@@ -20,6 +20,9 @@
     <string name="version">Version: </string>
     <string name="subjects">Subject(s)</string>
     <string name="useWireless">Use Wireless</string>
+    <string name="selectSubjects">Select Subjects</string>
+
+
     <!-- Strings related to Settings -->
 
     <string-array name="pref_sync_frequency_titles">

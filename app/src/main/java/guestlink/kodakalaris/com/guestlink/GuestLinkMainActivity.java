@@ -601,6 +601,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
     public void closeSession(View view) {
         try {
             Utilities.showYesNoDialog(this, "Close Session", "Are You Sure You Want to Close this Session?", new DialogInterface.OnClickListener() {
+                @SuppressWarnings("ConstantConditions")
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -705,7 +706,7 @@ public class GuestLinkMainActivity extends AppCompatActivity {
             this.sendBroadcast(mediaScanIntent);
 
 
-            ArrayList<String> toBeScanned = new ArrayList<String>();
+            ArrayList<String> toBeScanned = new ArrayList<>();
             toBeScanned.add(logFile);
             toBeScanned.add(guestidFile);
             toBeScanned.add(Environment.getExternalStorageDirectory().getCanonicalPath()   + "/guestlink/photographers.txt");

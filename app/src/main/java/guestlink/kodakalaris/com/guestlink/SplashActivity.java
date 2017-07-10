@@ -1,12 +1,10 @@
 package guestlink.kodakalaris.com.guestlink;
 
+//Created by Donald Chapman1 on 7/10/2017.
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
-/**
- * Created by Donald Chapman1 on 7/10/2017.
- */
 
 public class SplashActivity extends AppCompatActivity {
 

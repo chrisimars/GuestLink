@@ -1,14 +1,12 @@
 package guestlink.kodakalaris.com.guestlink;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class password extends AppCompatActivity {
@@ -27,7 +25,6 @@ public class password extends AppCompatActivity {
     public void btnOK_Click(View view){
        try {
             String pw = "";
-            pw.equals(txtPassword.getText().toString());
 
             if(txtPassword.getText().toString().equals("imagic")) {
                 Intent intentMessage=new Intent();
@@ -51,7 +48,8 @@ public class password extends AppCompatActivity {
                 });
             }
          } catch (Exception ex) {
-           Utilities.writeToFile(ex.getMessage().toString());
+           Utilities.writeToFile(ex.getMessage());
+
         }
     }
     public void cancel(View view){

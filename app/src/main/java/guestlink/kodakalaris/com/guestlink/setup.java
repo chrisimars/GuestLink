@@ -1,6 +1,5 @@
 package guestlink.kodakalaris.com.guestlink;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -29,7 +28,6 @@ public class setup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_setup);
-        Globals g = Globals.getInstance();  //Get a n instance of the Global Variables
         SharedPreferences sharedPreferences = this.getSharedPreferences("guestlink.kodakalaris.com.guestlink", Context.MODE_PRIVATE);
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -38,11 +36,7 @@ public class setup extends AppCompatActivity {
         //getWindow().getDecorView().setSystemUiVisibility(flags);
         setContentView(R.layout.activity_setup);
 
-        //Get instances of the Spinners and apply OnItemSelectedListener on it
-        Spinner spinPhotographer = (Spinner) findViewById(R.id.spinPhotographer);
-        Spinner spinLocation = (Spinner) findViewById(R.id.spinLocation);
-
-        //Populate Spinners
+       //Populate Spinners
         populateSpinner("photographers");
         populateSpinner("locations");
         EditText devName = (EditText) findViewById(R.id.editDeviceName);
@@ -52,7 +46,7 @@ public class setup extends AppCompatActivity {
     private void populateSpinner(String spinnerName) {
         String fileName = (Environment.getExternalStorageDirectory().getPath() + "/guestlink/" + spinnerName + ".txt");
         String line;
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> names = new ArrayList<>();
 
         //Read the lines of text into an ArrayList
         try {
@@ -151,7 +145,6 @@ public class setup extends AppCompatActivity {
                         case DialogInterface.BUTTON_POSITIVE:
                             finishAndRemoveTask();
                             break;
-
                         case DialogInterface.BUTTON_NEGATIVE:
                             break;
                     }
@@ -205,4 +198,29 @@ public class setup extends AppCompatActivity {
             Utilities.writeToLog(ex.toString(), logFile);
         }
     }
+    @Override
+    protected void onResume() {
+        try {
+            super.onResume();
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utilities.writeToLog(ex.toString(), logFile);
+        }
+
+    }
+  public void getSubjects(View view){
+      try {
+          // Create The  Intent and Start The Activity to scan the camera Barcode
+          Intent intentGetSubjects = new Intent(this, getSubjects.class);
+          startActivity(intentGetSubjects);
+          Utilities.writeToLog("User is selecting subjects.", logFile);
+      } catch (Exception ex) {
+          ex.printStackTrace();
+          Utilities.writeToLog(ex.toString(), logFile);
+      }
+
+  }
+
 }

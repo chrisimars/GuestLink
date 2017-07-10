@@ -1,9 +1,7 @@
 package guestlink.kodakalaris.com.guestlink;
 
+  //Created by Donald Chapman1 on 6/25/2017.
 
-/**
- * Created by Donald Chapman1 on 6/25/2017.
- */
 
 public class Globals {
     private static Globals instance;

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+   xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
     tools:context="guestlink.kodakalaris.com.guestlink.setup">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/btnSave"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/datasetuplup"
+        android:enabled="true"
+        android:onClick="getSysSetup" />
 
     <Spinner
         android:id="@+id/spinPhotographer"
@@ -37,11 +46,13 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="43dp"
+        android:layout_marginStart="-15dp"
         android:layout_toEndOf="@+id/editDeviceName"
         android:background="@drawable/checklup"
         android:onClick="save" />
 
     <Button
+        android:id="@+id/btnCancel"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignBottom="@+id/btnSysSetup"
@@ -119,7 +130,8 @@
         android:textSize="18sp"
         android:layout_above="@+id/btnSave"
         android:layout_alignStart="@+id/lblSubjects"
-        android:layout_marginBottom="15dp" />
+        android:layout_marginBottom="15dp"
+        android:layout_alignEnd="@+id/btnSysSetup" />
 
     <TextView
         android:id="@+id/lblSubjects"
@@ -130,6 +142,17 @@
         android:textSize="16sp"
         android:layout_above="@+id/txtSubjects"
         android:layout_alignStart="@+id/spinLocation" />
+
+    <Button
+        android:id="@+id/btnSubjects"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignEnd="@+id/btnSave"
+        android:layout_alignStart="@+id/btnSave"
+        android:layout_alignTop="@+id/txtSubjects"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/datasetuplup"
+        android:onClick="getSubjects"/>
 
 
 </android.widget.RelativeLayout>
